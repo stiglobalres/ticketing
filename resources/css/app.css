@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.alert-success {
+    color: green;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+.btn-save{
+    background: #727272;
+    color: white;
+}
+
+.btn {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: .5rem;
+    padding-top: .50rem;
+    padding-bottom: .5rem;
+}
+
+select {
+    min-width: 4rem;
+}
+.h3, h3 {
+    font-size: calc(1.3rem + .6vw) !important;
+}
+.To-Do {
+    background: grey;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    border-radius: .25rem;
+    color: white;
+}
+.In-Progress {
+    background: darkorange;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    border-radius: .25rem;
+    color: white;
+}
+.Done {
+    background: green;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    border-radius: .25rem;
+    color: white;
+}
