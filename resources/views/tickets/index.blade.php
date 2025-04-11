@@ -8,6 +8,10 @@
                     <div class="alert alert-success" role="alert">{{ session('success') }}</div>
                 @endif
 
+                @if(session('error'))
+                    <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+                @endif
+                
             <div class="grid grid-cols-2 mb-2 ">
                 <div><h3>{{ __('My Tickets') }}</h3></div>
                 <div class="text-right">

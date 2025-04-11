@@ -37,9 +37,9 @@ class TicketController extends Controller
     public function edit(Request $request)
     {
         $id = $request->id;
-        $tickets = $this->tickets->find($id );
+        $tickets = $this->tickets::where('created_by',Auth::user()->id)->find($id );
         if(!$tickets) {
-            return redirect()->route('tickets.index')->with('error', 'The ticket  number does found');
+            return redirect()->route('tickets.index')->with('error', 'Ticket does not exist');
         }
         $status = $this->statuses;
         return view('tickets.edit', compact('tickets', 'status'));
@@ -48,9 +48,9 @@ class TicketController extends Controller
     public function info(Request $request)
     {
         $id = $request->id;
-        $tickets = $this->tickets->find($id );
+        $tickets = $this->tickets::where('created_by',Auth::user()->id)->find($id );
         if(!$tickets) {
-            return redirect()->route('tickets.index')->with('error', 'The ticket  number does found');
+            return redirect()->route('tickets.index')->with('error', 'Ticket does not exist');
         }
         $status = $this->statuses;
         return view('tickets.info', compact('tickets', 'status'));
@@ -75,7 +75,7 @@ class TicketController extends Controller
 
             $this->tickets->title =  $request->title;
             $this->tickets->content =  $request->content;
-            $this->tickets->published =  $request->published;
+            $this->tickets->published =  ($request->published) ? 1:0;
             $this->tickets->created_by =  Auth::user()->id;
             $this->tickets->save();
             return redirect()->route('tickets.index')->with('success', 'Ticket created successfully.');
@@ -92,7 +92,7 @@ class TicketController extends Controller
         ]);
         
         $id = $request->id;
-        $tickets = $this->tickets->find($id );
+        $tickets = $this->tickets::where('created_by',Auth::user()->id)->find($id );
         if (request()->hasFile('attachment'))
         {
             $imageName = time().'.'.$request->attachment->extension();
@@ -101,7 +101,7 @@ class TicketController extends Controller
         }
 
         $tickets->content =  $request->content;
-        $tickets->published =  $request->published;
+        $tickets->published =  ($request->published) ? 1:0;
         $tickets->sts =  $request->status;
         $tickets->save();
 
